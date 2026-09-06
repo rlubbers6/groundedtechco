@@ -1,0 +1,178 @@
+/* Grounded Tech Co — shared styles
+   Palette borrows the piece colours from Gridlock so the studio site and the
+   app read as the same hand. Neutrals carry a faint green-grey cast rather
+   than sitting on a dead grey. */
+
+:root {
+  color-scheme: light;
+  --ground:   #F3F4F1;
+  --surface:  #FFFFFF;
+  --sunk:     #EBEDE8;
+  --line:     #DCDFD8;
+  --line-soft:#E7E9E4;
+  --text:     #1B1F1C;
+  --dim:      #565C56;
+  --faint:    #868D86;
+  --teal:     #1F6E76;
+  --terra:    #B4543A;
+  --sage:     #4F7A45;
+  --plum:     #6E4E8C;
+  --mustard:  #A87A1E;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ground:   #101310;
+    --surface:  #191D1A;
+    --sunk:     #141815;
+    --line:     #2A2F2B;
+    --line-soft:#222722;
+    --text:     #E9EBE7;
+    --dim:      #A2A9A2;
+    --faint:    #757B75;
+    --teal:     #64B8BE;
+    --terra:    #E08D74;
+    --sage:     #8FBE82;
+    --plum:     #B393D0;
+    --mustard:  #D9AC55;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 22px 90px;
+  background: var(--ground);
+  color: var(--text);
+  font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.66;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 660px; margin: 0 auto; }
+.wrap.wide { max-width: 760px; }
+
+/* ── masthead ──────────────────────────────────────────── */
+.site-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 46px;
+}
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -.015em;
+  color: var(--text);
+  text-decoration: none;
+}
+.mark { display: flex; gap: 3px; }
+.mark i {
+  width: 9px; height: 9px; border-radius: 2px; display: block;
+}
+.site-head nav { display: flex; gap: 20px; font-size: .9rem; }
+.site-head nav a { color: var(--dim); text-decoration: none; }
+.site-head nav a:hover { color: var(--text); }
+
+/* ── type ──────────────────────────────────────────────── */
+h1 {
+  font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.1rem, 6.4vw, 3.15rem);
+  line-height: 1.04;
+  letter-spacing: -.032em;
+  margin: 0 0 18px;
+  text-wrap: balance;
+}
+h2 {
+  font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.16rem;
+  letter-spacing: -.014em;
+  margin: 38px 0 8px;
+}
+h3 {
+  font-family: "Bricolage Grotesque", "Public Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 26px 0 4px;
+}
+.lede { font-size: 1.1rem; color: var(--dim); margin: 0 0 8px; max-width: 54ch; }
+p { margin: 0 0 15px; color: var(--dim); }
+p.tight { margin-bottom: 8px; }
+strong { color: var(--text); font-weight: 600; }
+ul { padding-left: 20px; margin: 0 0 15px; color: var(--dim); }
+li { margin-bottom: 6px; }
+a { color: var(--teal); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 2px; }
+
+.eyebrow {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 12px;
+}
+
+/* ── app card ──────────────────────────────────────────── */
+.app {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 22px;
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 26px;
+  text-decoration: none;
+}
+.app:hover { border-color: var(--line); }
+.app img { width: 84px; height: 84px; border-radius: 19px; display: block; }
+.app h2 { margin: 0 0 4px; font-size: 1.2rem; color: var(--text); }
+.app p { margin: 0 0 10px; font-size: .94rem; }
+.app .status {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: color-mix(in srgb, var(--teal) 13%, transparent);
+  border-radius: 3px;
+  padding: 3px 8px;
+}
+
+/* ── policy page ───────────────────────────────────────── */
+.updated { font-size: .87rem; color: var(--faint); margin: 0 0 4px; }
+.callout {
+  background: var(--sunk);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 22px 0;
+}
+.callout p:last-child { margin-bottom: 0; }
+
+footer {
+  margin-top: 60px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: .87rem;
+  color: var(--faint);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  justify-content: space-between;
+}
+footer a { color: var(--faint); }
