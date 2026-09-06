@@ -11,31 +11,30 @@ assets/                     stylesheet and app icon
 CNAME                       custom domain for GitHub Pages
 ```
 
-## DNS setup in Cloudflare
+## Hosting
 
-The domain is registered at Cloudflare; the site is hosted by GitHub Pages.
-In the Cloudflare dashboard, under **DNS → Records**, add:
+Cloudflare Pages, deploying from `main` in this repo. Cloudflare is the
+registrar, the DNS, and the host, so there is one dashboard and no records to
+wire up by hand.
 
-| Type  | Name | Content                 | Proxy    |
-|-------|------|-------------------------|----------|
-| A     | @    | 185.199.108.153         | DNS only |
-| A     | @    | 185.199.109.153         | DNS only |
-| A     | @    | 185.199.110.153         | DNS only |
-| A     | @    | 185.199.111.153         | DNS only |
-| CNAME | www  | rlubbers6.github.io     | DNS only |
+Push to `main` and Cloudflare rebuilds automatically. There is no build step —
+the repo is served as-is.
 
-**Set the proxy to DNS only (grey cloud), not proxied (orange cloud).** GitHub
-issues the TLS certificate itself, and it cannot complete that challenge while
-Cloudflare is terminating the connection. Leaving the orange cloud on is the
-usual reason a custom domain sits stuck on "certificate provisioning".
+**Pages project settings**
 
-If you later want Cloudflare's proxy in front, turn it on only after the
-certificate has issued, and set **SSL/TLS → Overview** to **Full**. Leaving it
-on *Flexible* causes an infinite redirect loop with GitHub Pages.
+| Setting                | Value  |
+|------------------------|--------|
+| Framework preset       | None   |
+| Build command          | *empty* |
+| Build output directory | `/`    |
+| Production branch      | `main` |
 
-Then in the GitHub repo: **Settings → Pages → Custom domain** should already
-read `groundedtechco.com` from the `CNAME` file. Tick **Enforce HTTPS** once
-the certificate has issued — usually within an hour, sometimes minutes.
+The custom domain is attached in **Pages → the project → Custom domains**,
+which writes the DNS record itself. No `CNAME` file is needed — that file is a
+GitHub Pages mechanism and was removed when this moved to Cloudflare.
+
+GitHub Pages is disabled for this repo. Running both would have the two
+services fighting over the same domain.
 
 ## Editing
 
