@@ -1,0 +1,5 @@
+# Authorized digital sellers for Grounded Tech Co apps.
+# https://iabtechlab.com/app-ads-txt/
+
+# Sparrow: Baby & Tube Tracker (iOS)
+google.com, pub-7422053178382455, DIRECT, f08c47fec0942fa0
